@@ -13,6 +13,8 @@
 		DD9BD41E2276C862009867D8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DD9BD41D2276C862009867D8 /* Assets.xcassets */; };
 		DD9BD4212276C862009867D8 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DD9BD41F2276C862009867D8 /* LaunchScreen.storyboard */; };
 		DD9BD42C2276C862009867D8 /* WelcomeToIntercomTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD9BD42B2276C862009867D8 /* WelcomeToIntercomTests.swift */; };
+		DD9BD4392276C9F0009867D8 /* customers.txt in Resources */ = {isa = PBXBuildFile; fileRef = DD9BD4382276C9F0009867D8 /* customers.txt */; };
+		DD9BD43B2276CA8C009867D8 /* Customer.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD9BD43A2276CA8C009867D8 /* Customer.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -36,6 +38,8 @@
 		DD9BD4272276C862009867D8 /* WelcomeToIntercomTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = WelcomeToIntercomTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		DD9BD42B2276C862009867D8 /* WelcomeToIntercomTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeToIntercomTests.swift; sourceTree = "<group>"; };
 		DD9BD42D2276C862009867D8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		DD9BD4382276C9F0009867D8 /* customers.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = customers.txt; sourceTree = "<group>"; };
+		DD9BD43A2276CA8C009867D8 /* Customer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Customer.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -77,12 +81,14 @@
 		DD9BD4152276C860009867D8 /* WelcomeToIntercom */ = {
 			isa = PBXGroup;
 			children = (
+				DD9BD4382276C9F0009867D8 /* customers.txt */,
 				DD9BD4162276C860009867D8 /* AppDelegate.swift */,
 				DD9BD4182276C860009867D8 /* ViewController.swift */,
 				DD9BD41A2276C860009867D8 /* Main.storyboard */,
 				DD9BD41D2276C862009867D8 /* Assets.xcassets */,
 				DD9BD41F2276C862009867D8 /* LaunchScreen.storyboard */,
 				DD9BD4222276C862009867D8 /* Info.plist */,
+				DD9BD43A2276CA8C009867D8 /* Customer.swift */,
 			);
 			path = WelcomeToIntercom;
 			sourceTree = "<group>";
@@ -177,6 +183,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DD9BD4392276C9F0009867D8 /* customers.txt in Resources */,
 				DD9BD4212276C862009867D8 /* LaunchScreen.storyboard in Resources */,
 				DD9BD41E2276C862009867D8 /* Assets.xcassets in Resources */,
 				DD9BD41C2276C860009867D8 /* Main.storyboard in Resources */,
@@ -197,6 +204,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DD9BD43B2276CA8C009867D8 /* Customer.swift in Sources */,
 				DD9BD4192276C860009867D8 /* ViewController.swift in Sources */,
 				DD9BD4172276C860009867D8 /* AppDelegate.swift in Sources */,
 			);
