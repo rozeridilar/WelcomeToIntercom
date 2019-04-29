@@ -9,22 +9,16 @@
 import UIKit
 
 struct ResponseData: Decodable {
-    var person: [Person]
+    var customers: [Customer]
 }
 
-struct Person : Decodable {
-    var name: String
-    var age: String
-    var employed: String
-}
-
-func loadJson(filename fileName: String) -> [Person]? {
-    if let url = Bundle.main.url(forResource: fileName, withExtension: "json") {
+func loadJson(filename fileName: String) -> [Customer]? {
+    if let url = Bundle.main.url(forResource: fileName, withExtension: "txt") {
         do {
             let data = try Data(contentsOf: url)
             let decoder = JSONDecoder()
             let jsonData = try decoder.decode(ResponseData.self, from: data)
-            return jsonData.person
+            return jsonData.customers
         } catch {
             print("error:\(error)")
         }
@@ -34,9 +28,13 @@ func loadJson(filename fileName: String) -> [Person]? {
 
 class ViewController: UIViewController {
 
+    var customers : [Customer] = []
+
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+        
+        customers = loadJson(filename: "customers") ?? []
     }
 
 
