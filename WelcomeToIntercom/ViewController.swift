@@ -22,11 +22,12 @@ class ViewController: UIViewController {
         
     }
     
+    func checkLocations(_ customers: [Customer]){
     
+    }
 }
 
 extension ViewController{
-    
     func loadJson(filename fileName: String){
         DispatchQueue.global(qos: .background).async{
             if let path = Bundle.main.path(forResource: fileName, ofType: "txt") {
@@ -50,6 +51,7 @@ extension ViewController{
                 } catch {
                     print(error)
                 }
+                self.checkLocations(self.customers)
             }
         }
     }
