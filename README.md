@@ -2,9 +2,10 @@
 Invite the customers who are more closer : D
 
 This app shows the customers(by their ascending userId) who are 100 kms within Intercom.
-You can simple change the customer list inside the project in customers.txt file. It reads each json object line by line then save the customers who are within 100 kms, then updates UI with closest customer names and ids.
+You can simply change the customer list inside the project, in customers.txt file. 
+It reads each json object line by line then save the customers who are within 100 kms, then updates UI with closest customer names and ids.
 All customers must have longitude and latitude. 
-To use this program you must have XCode v 10.
+To use this program you must have XCode >v10
 
 Hope you will like this georgeus teeny tiny app, enjoy! 
 
