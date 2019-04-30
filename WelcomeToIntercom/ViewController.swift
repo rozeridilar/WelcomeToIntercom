@@ -47,6 +47,7 @@ class ViewController: UIViewController {
             }
             let distance = ( radiusOfEarth * acos( cos( radians(intercomLongtitude) ) * cos( radians( Double(customer.longitude)!) ) * cos( radians( Double(customer.latitude)!) - radians(intercomLatitude) ) + sin( radians(intercomLongtitude) ) * sin( radians( Double(customer.longitude)!)) ) )
             
+            
             if distance < closeLocationwithin100Kms {
                 closestCustomers.append(customer)
             }
