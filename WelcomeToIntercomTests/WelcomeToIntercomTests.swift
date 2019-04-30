@@ -22,6 +22,11 @@ class WelcomeToIntercomTests: XCTestCase {
     func testExample() {
         // This is an example of a functional test case.
         // Use XCTAssert and related functions to verify your tests produce the correct results.
+        let bundle = Bundle(for: type(of: self))
+        guard let url = bundle.url(forResource: "customers", withExtension: "txt"),
+            let _ = try? Data(contentsOf: url) else {
+                return
+        }
     }
 
     func testPerformanceExample() {

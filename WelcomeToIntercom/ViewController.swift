@@ -42,15 +42,19 @@ class ViewController: UIViewController {
         let intercomLongtitude = intercomLocation.coordinate.longitude
         let intercomLatitude = intercomLocation.coordinate.latitude
         for customer in customers {
-            guard Double(customer.longitude) != nil || Double(customer.longitude) != nil else{
+            
+            guard  Double(customer.longitude) != nil && Double(customer.latitude) != nil else{
+                let errorMsg = Double(customer.longitude) == nil ? "longitude" : Double(customer.latitude) == nil ? "latitude" :  "longitude and latitude"
+                self.showError("\(customer.name) doesnt have \(errorMsg)")
                 return
             }
-            let distance = ( radiusOfEarth * acos( cos( radians(intercomLongtitude) ) * cos( radians( Double(customer.longitude)!) ) * cos( radians( Double(customer.latitude)!) - radians(intercomLatitude) ) + sin( radians(intercomLongtitude) ) * sin( radians( Double(customer.longitude)!)) ) )
             
+            let distance = ( radiusOfEarth * acos( cos( radians(intercomLongtitude) ) * cos( radians( Double(customer.longitude)!) ) * cos( radians( Double(customer.latitude)!) - radians(intercomLatitude) ) + sin( radians(intercomLongtitude) ) * sin( radians( Double(customer.longitude)!)) ) )
             
             if distance <= closeLocationwithin100Kms {
                 closestCustomers.append(customer)
             }
+            
         }
         updateUIWithClosestCustomers(closestCustomers)
     }
@@ -98,6 +102,13 @@ extension ViewController{
             self.textViewCustomers.text = "\(customerStr)"
         }
         
+    }
+    
+    func showError(_ error: String){
+        let sendMailErrorAlert = UIAlertController(title: "Ups!", message: error, preferredStyle: .alert)
+        let dismiss = UIAlertAction(title: "OK", style: .default, handler: nil)
+        sendMailErrorAlert.addAction(dismiss)
+        self.present(sendMailErrorAlert, animated: true, completion: nil)
     }
 }
 
