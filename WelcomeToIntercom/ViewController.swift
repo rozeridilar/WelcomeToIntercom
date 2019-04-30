@@ -6,10 +6,15 @@
 //  Copyright © 2019 Rozeri Dilar. All rights reserved.
 //
 
+//Customers.txt should be full of json objects line by line, file is readed line by line and converted to customer json objects then added to customers array.
+
+
 import UIKit
+import CoreLocation
 
 
-
+//Here you can change the targeted location
+let intercomLocation = CLLocation(latitude: 53.339428, longitude: -6.257664)
 
 class ViewController: UIViewController {
     
@@ -24,6 +29,10 @@ class ViewController: UIViewController {
     
     func checkLocations(_ customers: [Customer]){
     
+        for customer in customers {
+            print(customer.latitude)
+            print(customer.longitude)
+        }
     }
 }
 
