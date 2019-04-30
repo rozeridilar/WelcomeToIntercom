@@ -37,7 +37,7 @@ class ViewController: UIViewController {
         loadJson(filename: "customers")
         
     }
-   
+    
     func checkLocations(_ customers: [Customer]){
         let intercomLongtitude = intercomLocation.coordinate.longitude
         let intercomLatitude = intercomLocation.coordinate.latitude
@@ -91,10 +91,13 @@ extension ViewController{
     
     //MARK: UI Functions
     func updateUIWithClosestCustomers(_ closestCustomers: [Customer]){
-        let csv = closestCustomers.sorted{$0.userId<$1.userId}.reduce("Customers who are close within 100 kms are, \n ") {text, customer in "\(text) \n \(customer.name) with userId: \(customer.userId) \n"}
+        
+        let customerStr = closestCustomers.count > 0 ?  closestCustomers.sorted{$0.userId<$1.userId}.reduce("Customers who are close within 100 kms are, \n ") {text, customer in "\(text) \n \(customer.name) with userId: \(customer.userId) \n"} : "You do not have close customers." 
+        
         DispatchQueue.main.async {
-            self.textViewCustomers.text = "\(csv)"
+            self.textViewCustomers.text = "\(customerStr)"
         }
+        
     }
 }
 
