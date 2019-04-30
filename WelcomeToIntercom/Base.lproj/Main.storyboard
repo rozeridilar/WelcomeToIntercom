@@ -1,7 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13122.16" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+    <device id="retina6_5" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13104.12"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -9,16 +13,46 @@
         <!--View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="WelcomeToIntercom" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Dj0-yU-aFX">
+                                <rect key="frame" x="0.0" y="20" width="414" height="876"/>
+                                <subviews>
+                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="u0t-dF-EWD">
+                                        <rect key="frame" x="0.0" y="32" width="414" height="824"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                    </textView>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="u0t-dF-EWD" secondAttribute="trailing" id="AAI-bD-ZHx"/>
+                                    <constraint firstItem="u0t-dF-EWD" firstAttribute="top" secondItem="Dj0-yU-aFX" secondAttribute="top" constant="32" id="P47-78-39v"/>
+                                    <constraint firstItem="u0t-dF-EWD" firstAttribute="leading" secondItem="Dj0-yU-aFX" secondAttribute="leading" id="vLZ-qE-VfN"/>
+                                    <constraint firstAttribute="bottom" secondItem="u0t-dF-EWD" secondAttribute="bottom" constant="20" id="zpJ-aq-PLK"/>
+                                </constraints>
+                            </view>
+                        </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="Dj0-yU-aFX" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="1Ab-Z3-DSC"/>
+                            <constraint firstAttribute="bottom" secondItem="Dj0-yU-aFX" secondAttribute="bottom" id="98u-hv-zZO"/>
+                            <constraint firstItem="Dj0-yU-aFX" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="Vb6-7k-K9s"/>
+                            <constraint firstItem="Dj0-yU-aFX" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" constant="20" id="xaJ-K4-8pA"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
+                    <connections>
+                        <outlet property="textViewCustomers" destination="u0t-dF-EWD" id="YGa-lL-gq3"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="139.13043478260872" y="93.080357142857139"/>
         </scene>
     </scenes>
 </document>

@@ -6,7 +6,7 @@
 //  Copyright © 2019 Rozeri Dilar. All rights reserved.
 //
 
-//Customers.txt should be full of json objects line by line, file is readed line by line and converted to customer json objects then added to customers array.
+//Customers.txt should be full of json objects line by line, because file is readed line by line and converted to customer json objects, after then, these objects are added to customers array.
 
 
 import UIKit
@@ -16,23 +16,42 @@ import CoreLocation
 //Here you can change the targeted location
 let intercomLocation = CLLocation(latitude: 53.339428, longitude: -6.257664)
 
+let radiusOfEarth: Double = 6371
+
+let closeLocationwithin100Kms: Double = 100
+
 class ViewController: UIViewController {
     
+    //MARK: Variables
     var customers : [Customer] = []
+    var closestCustomers: [Customer] = []
     
+    //MARK: Outlets
+    @IBOutlet weak var textViewCustomers: UITextView!
+    
+    
+    //MARK: Lyfecycles
     override func viewDidLoad() {
         super.viewDidLoad()
         
         loadJson(filename: "customers")
         
     }
-    
+   
     func checkLocations(_ customers: [Customer]){
-    
+        let intercomLongtitude = intercomLocation.coordinate.longitude
+        let intercomLatitude = intercomLocation.coordinate.latitude
         for customer in customers {
-            print(customer.latitude)
-            print(customer.longitude)
+            guard Double(customer.longitude) != nil || Double(customer.longitude) != nil else{
+                return
+            }
+            let distance = ( radiusOfEarth * acos( cos( radians(intercomLongtitude) ) * cos( radians( Double(customer.longitude)!) ) * cos( radians( Double(customer.latitude)!) - radians(intercomLatitude) ) + sin( radians(intercomLongtitude) ) * sin( radians( Double(customer.longitude)!)) ) )
+            
+            if distance < closeLocationwithin100Kms {
+                closestCustomers.append(customer)
+            }
         }
+        updateUIWithClosestCustomers(closestCustomers)
     }
 }
 
@@ -62,6 +81,18 @@ extension ViewController{
                 }
                 self.checkLocations(self.customers)
             }
+        }
+    }
+    
+    func radians(_ number: Double) -> Double {
+        return number * .pi / 180
+    }
+    
+    //MARK: UI Functions
+    func updateUIWithClosestCustomers(_ closestCustomers: [Customer]){
+        let csv = closestCustomers.sorted{$0.userId<$1.userId}.reduce("Customers who are close within 100 kms are, \n ") {text, customer in "\(text) \n \(customer.name) with userId: \(customer.userId) \n"}
+        DispatchQueue.main.async {
+            self.textViewCustomers.text = "\(csv)"
         }
     }
 }
