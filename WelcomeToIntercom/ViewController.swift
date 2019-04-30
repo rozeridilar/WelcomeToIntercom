@@ -8,36 +8,50 @@
 
 import UIKit
 
-struct ResponseData: Decodable {
-    var customers: [Customer]
-}
 
-func loadJson(filename fileName: String) -> Customer? {
-    if let url = Bundle.main.url(forResource: fileName, withExtension: "txt") {
-        do {
-            let data = try Data(contentsOf: url)
-            let decoder = JSONDecoder()
-            let jsonData = try decoder.decode(Customer.self, from: data)
-            print(jsonData)
-            return jsonData
-        } catch {
-            print("error:\(error)")
-        }
-    }
-    return nil
-}
+
 
 class ViewController: UIViewController {
-
+    
     var customers : [Customer] = []
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
         
-     //   customers = loadJson(filename: "customers") ?? []
-    let k = loadJson(filename: "customers")
+        loadJson(filename: "customers")
+        
     }
+    
+    
+}
 
-
+extension ViewController{
+    
+    func loadJson(filename fileName: String){
+        DispatchQueue.global(qos: .background).async{
+            if let path = Bundle.main.path(forResource: fileName, ofType: "txt") {
+                do {
+                    let data = try String(contentsOfFile: path, encoding: .utf8)
+                    let myStrings = data.components(separatedBy: .newlines)
+                    guard myStrings.count > 0 else{
+                        return
+                    }
+                    for str in myStrings {
+                        let data = str.data(using: .utf8)!
+                        do {
+                            let customer = try JSONDecoder().decode(Customer.self, from: data)
+                            print(customer)
+                            self.customers.append(customer)
+                            
+                        } catch {
+                            print(error)
+                        }
+                    }
+                } catch {
+                    print(error)
+                }
+            }
+        }
+    }
 }
 

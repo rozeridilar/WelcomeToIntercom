@@ -16,7 +16,7 @@ struct Customer {
     var longitude: String
 }
 
-extension Customer: Decodable {
+extension Customer: Codable {
     enum CodingKeys: String, CodingKey {
         case userId = "user_id"
         case name
